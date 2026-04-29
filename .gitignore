@@ -1,0 +1,38 @@
+# --- Python ---
+# Entornos virtuales (venv, env, conda)
+venv/
+.venv/
+env/
+conda-env/
+__pycache__/
+*.py[cod]
+
+# Dependencias (se gestionan con requirements.txt, no se suben)
+.python-version
+pip-log.txt
+pip-delete-this-directory.txt
+
+# --- Base de datos (PostgreSQL/Local) ---
+# Ignorar archivos locales de base de datos
+*.db
+*.sqlite3
+*.postgres
+
+# --- Secretos y Configuración ---
+# Archivos .env que contienen credenciales (DB_USER, DB_PASSWORD)
+.env
+.secrets
+*.pem
+
+# --- Visual Studio Code ---
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+.history/
+
+# --- Otros ---
+.DS_Store
+*.log
