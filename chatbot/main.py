@@ -1,5 +1,6 @@
 # chatbot
 import connection
+from repositories.productoRepository import ProductoRepository
 
 conn = connection.get_connection()
 cursor = conn.cursor()
@@ -18,25 +19,8 @@ while True:
     elif opcion == "producto":
         nombre = input("Ingresa el nombre del producto: ").strip().lower()
         
-        cursor.execute(
-            """
-            SELECT 
-                p.id,
-                p.nombre,
-                c.nombre AS categoria,
-                m.nombre AS marca,
-                p.precio,
-                p.stock
-            FROM producto p
-            JOIN categoria c ON p.categoria_id = c.id
-            JOIN marca m ON p.marca_id = m.id
-            WHERE p.nombre ILIKE %s
-            AND p.activo = TRUE
-            """,
-            ("%" + nombre + "%",)
-        )
-        
-        datos = cursor.fetchall()
+        prodRepo = ProductoRepository(conn)
+        datos = prodRepo.buscar_producto(nombre)
         
         if datos:
             for x in datos:
