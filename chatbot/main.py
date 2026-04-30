@@ -4,6 +4,8 @@ from repositories.producto_repository import ProductoRepository
 from repositories.pedido_repository import PedidoRepository
 
 conn = connection.get_connection()
+prodRepo = ProductoRepository(conn)
+pedRepo = PedidoRepository(conn)
 
 print("Chatbot E-commerce")
 print("Escribe: producto, pedido, comprar o salir")
@@ -17,9 +19,8 @@ while True:
 
     ## CONSULTA PRODUCTO
     elif opcion == "producto":
-        nombre = input("Ingresa el nombre del producto: ").strip().lower()
+        nombre = input("Ingresa el nombre del producto: ").strip()
         
-        prodRepo = ProductoRepository(conn)
         datos = prodRepo.buscar_producto(nombre)
         
         if datos:
@@ -37,11 +38,9 @@ while True:
 
     ## CONSULTA PEDIDO
     elif opcion == "pedido":
-        pedido_id = input("ID del pedido: ").strip()
+        pedido_id = int(input("ID del pedido: "))
         
         # 1. Encabezado del pedido
-
-        pedRepo = PedidoRepository(conn)
         pedido = pedRepo.buscar_pedido_por_id(pedido_id)
         
         if pedido:
