@@ -1,10 +1,10 @@
 # chatbot
 import connection
-from repositories.producto_repository import ProductoRepository
+from services.producto_service import ProductoService
 from services.pedido_service import PedidoService 
 
 conn = connection.get_connection()
-prodRepo = ProductoRepository(conn)
+prodService = ProductoService(conn)
 pedService = PedidoService(conn)
 
 print("Chatbot E-commerce")
@@ -22,17 +22,17 @@ while True:
     elif opcion == "producto":
         nombre = input("Ingresa el nombre del producto que buscas: ").strip()
         
-        datos = prodRepo.buscar_producto(nombre)
+        productos = prodService.buscar_productos(nombre)
         
-        if datos:
-            for x in datos:
+        if productos:
+            for prod in productos:
                 print(f"""
-                    ID producto {x[0]}
-                    Nombre: {x[1]}
-                    Categoria: {x[2]}
-                    Marca: {x[3]}
-                    Precio: {x[4]}
-                    Stock: {x[5]}
+                    ID producto {prod[0]}
+                    Nombre: {prod[1]}
+                    Categoria: {prod[2]}
+                    Marca: {prod[3]}
+                    Precio: {prod[4]}
+                    Stock: {prod[5]}
                 """)
         else:
             print("Ups, parece que no tenemos el producto que buscas, prueba con otro")
@@ -54,13 +54,13 @@ while True:
                 Fecha: {pedido[2]}
                 Total: Q {pedido[3]}
             """)
-            for d in detalles:
+            for det in detalles:
                 print(f"""
                 Detalles:
                       
-                Producto: {d[0]},
-                Cantidad: {d[1]},
-                Precio Unitario: Q {d[2]}
+                Producto: {det[0]},
+                Cantidad: {det[1]},
+                Precio Unitario: Q {det[2]}
                 """)
         else: print("No se encontro el pedido")
 
