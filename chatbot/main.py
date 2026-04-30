@@ -1,9 +1,9 @@
 # chatbot
 import connection
 from repositories.producto_repository import ProductoRepository
+from repositories.pedido_repository import PedidoRepository
 
 conn = connection.get_connection()
-cursor = conn.cursor()
 
 print("Chatbot E-commerce")
 print("Escribe: producto, pedido, comprar o salir")
@@ -40,21 +40,9 @@ while True:
         pedido_id = input("ID del pedido: ").strip()
         
         # 1. Encabezado del pedido
-        cursor.execute(
-            """
-            SELECT 
-                p.id,
-                c.nombre,
-                p.fecha,
-                p.total
-            FROM pedido p
-            JOIN cliente c ON p.cliente_id = c.id
-            WHERE p.id = %s
-            """,
-            (pedido_id,)
-        )
-        
-        pedido = cursor.fetchone()
+
+        pedRepo = PedidoRepository(conn)
+        pedido = pedRepo.buscar_pedido_por_id(pedido_id)
         
         if pedido:
             print("\n=== PEDIDO ===")
@@ -64,20 +52,7 @@ while True:
             print("Total:", pedido[3])
 
             # 2. Detalle del pedido
-            cursor.execute(
-                """
-                SELECT 
-                    pr.nombre,
-                    d.cantidad,
-                    d.precio_unitario
-                FROM detalle_pedido d
-                JOIN producto pr ON d.producto_id = pr.id
-                WHERE d.pedido_id = %s
-                """,
-                (pedido_id,)
-            )
-
-            detalles = cursor.fetchall()
+            detalles = pedRepo.buscar_detalles_por_pedido_id(pedido_id)
 
             print("\n--- Detalles ---")
             for d in detalles:
@@ -94,5 +69,4 @@ while True:
     else:
         print("Opcion no valida")
 
-cursor.close()
 conn.close()
