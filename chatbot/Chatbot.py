@@ -1,22 +1,14 @@
 # chatbot
+import connection
 
-import psycopg
-
-conn = psycopg.connect(
-    host="localhost",
-    port="5432",
-    dbname="test_shop",
-    user="postgres",
-    password="postgres"
-)
-
+conn = connection.get_connection()
 cursor = conn.cursor()
 
 print("Chatbot E-commerce")
 print("Escribe: producto, pedido, comprar o salir")
 
 while True:
-    opcion = input("/Hola: ").strip().lower()
+    opcion = input("Opcion: ").strip().lower()
     
     if opcion == "salir":
         print("Adios")
@@ -24,7 +16,7 @@ while True:
 
     ## CONSULTA PRODUCTO
     elif opcion == "producto":
-        nombre = input("Ingresa el nombre del producto: ").strip()
+        nombre = input("Ingresa el nombre del producto: ").strip().lower()
         
         cursor.execute(
             """
