@@ -1,6 +1,6 @@
 # chatbot
 import connection
-from repositories.productoRepository import ProductoRepository
+from repositories.producto_repository import ProductoRepository
 
 conn = connection.get_connection()
 cursor = conn.cursor()
