@@ -67,6 +67,6 @@ while True:
     elif opcion == "comprar":
         print("Estamos trabajando para que pronto puedas comprar desde aqui")
 
-    else: print("Parece que eres pendejo, prueba escribir: producto, pedido, comprar o salir")
+    else: print("no tenemos una opción llamada así, prueba escribir: producto, pedido, comprar o salir")
 
 conn.close()
