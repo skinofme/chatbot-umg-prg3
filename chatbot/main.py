@@ -18,7 +18,7 @@ def procesar_input(opcion):
 
     elif opcion.startswith("producto:"):
         nombre = opcion.split(":", 1)[1].strip()
-        productos = prodService.buscar_productos(nombre)
+        productos = prodService.buscar_por_nombre(nombre)
 
         if productos:
             respuesta = ""
@@ -66,8 +66,30 @@ def procesar_input(opcion):
         else:
             return "No se encontro el pedido"
 
+    elif opcion == "categoria":
+        return "__PEDIR__NOMBRE__CATEGORIA__"
+    elif opcion.startswith("categoria:"):
+            print(opcion)
+            categoria = opcion.split(":", 1)[1].strip()
+            productos = prodService.buscar_por_categoria(categoria)
+
+            if productos:
+                respuesta = ""
+                for prod in productos:
+                    respuesta += f"""
+                        ID producto {prod[0]}
+                        Nombre: {prod[1]}
+                        Categoria: {prod[2]}
+                        Marca: {prod[3]}
+                        Precio: {prod[4]}
+                        Stock: {prod[5]}
+                    """
+                return respuesta
+            else:
+                return "Ups, parece que no tenemos el producto que buscas, prueba con otro"
+    
     elif opcion == "comprar":
         return "Estamos trabajando para que pronto puedas comprar desde aqui"
 
     else:
-        return "No tenemos esa opción \nprueba escribir: producto, pedido, comprar o salir"
+        return "No tenemos esa opción \nprueba escribir: producto, categoria, pedido, comprar o salir"

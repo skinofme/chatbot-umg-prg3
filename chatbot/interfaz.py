@@ -105,7 +105,7 @@ class ChatUI(QWidget):
         main_layout.addLayout(bottom_layout)
         self.setLayout(main_layout)
 
-        self.add_bot_message("Hola gracias por preferirnos, como puedo ayudarte? escribe alguna de estas palabras clave para que pueda ayudarte con tu consulta: producto, pedido, comprar o salir")
+        self.add_bot_message("Hola gracias por preferirnos, como puedo ayudarte? escribe alguna de estas palabras clave para que pueda ayudarte con tu consulta: producto, categoria, pedido, comprar o salir")
 
     def mostrar_menu(self):
         menu = QMenu()
@@ -181,10 +181,12 @@ class ChatUI(QWidget):
             text = f"producto:{text}"
         elif self.modo == "pedido":
             text = f"pedido:{text}"
+        elif self.modo == "categoria":
+            text = f"categoria:{text}"
 
         self.last_input = text
 
-        self.typing_label = self.add_bot_message("Escribiendo.")
+        self.typing_label = self.add_bot_message("Escribiendo...")
 
         self.dots = 1
         self.timer = QTimer()
@@ -216,6 +218,9 @@ class ChatUI(QWidget):
             self.typing_label.setText("Escribe el ID del pedido que quieres consultar: ")
             self.modo = "pedido"
 
+        elif respuesta == "__PEDIR__NOMBRE__CATEGORIA__":
+            self.typing_label.setText("Ingresa el nombre de la categoria del producto: ")
+            self.modo = "categoria"
         else:
             self.typing_label.setText(respuesta)
             self.modo = None
