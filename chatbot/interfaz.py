@@ -26,7 +26,7 @@ class ChatUI(QWidget):
         self.fondo = QLabel(self)
         self.fondo.setGeometry(0, 0, 400, 550)
 
-        pixmap_fondo = QPixmap("assets/fondo.jpg")
+        pixmap_fondo = QPixmap("chatbot/assets/fondo.jpg")
         self.fondo.setPixmap(pixmap_fondo)
         self.fondo.setScaledContents(True)
         self.fondo.lower()
@@ -36,7 +36,7 @@ class ChatUI(QWidget):
         header_layout = QHBoxLayout()
 
         logo_label = QLabel()
-        logo_pixmap = QPixmap("assets/logo.jpg")
+        logo_pixmap = QPixmap("chatbot/assets/logo.jpg")
         logo_pixmap = logo_pixmap.scaled(50, 50, Qt.KeepAspectRatio, Qt.SmoothTransformation)
 
         logo_label.setPixmap(logo_pixmap)
@@ -122,7 +122,7 @@ class ChatUI(QWidget):
         layout = QHBoxLayout()
 
         avatar = QLabel()
-        pixmap = QPixmap("assets/robot.jpg")
+        pixmap = QPixmap("chatbot/assets/robot.jpg")
         pixmap = pixmap.scaled(40, 40, Qt.KeepAspectRatioByExpanding)
 
         avatar.setPixmap(pixmap)
