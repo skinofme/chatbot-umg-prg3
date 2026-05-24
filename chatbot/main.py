@@ -24,12 +24,12 @@ def procesar_input(opcion):
             respuesta = ""
             for prod in productos:
                 respuesta += f"""
-                    ID producto {prod[0]}
-                    Nombre: {prod[1]}
-                    Categoria: {prod[2]}
-                    Marca: {prod[3]}
-                    Precio: {prod[4]}
-                    Stock: {prod[5]}
+    ID producto {prod[0]}
+    Nombre: {prod[1]}
+    Categoria: {prod[2]}
+    Marca: {prod[3]}
+    Precio: {prod[4]}
+    Stock: {prod[5]}
                 """
             return respuesta
         else:
@@ -47,19 +47,19 @@ def procesar_input(opcion):
             detalles = result["detalles"]
 
             respuesta = f"""
-                Pedido #{pedido[0]}
-                Cliente: {pedido[1]}
-                Fecha: {pedido[2]}
-                Total: Q {pedido[3]}
+    Pedido #{pedido[0]}
+    Cliente: {pedido[1]}
+    Fecha: {pedido[2]}
+    Total: Q {pedido[3]}
             """
 
             for det in detalles:
                 respuesta += f"""
-                Detalles:
-                      
-                Producto: {det[0]},
-                Cantidad: {det[1]},
-                Precio Unitario: Q {det[2]}
+    Detalles:
+            
+    Producto: {det[0]},
+    Cantidad: {det[1]},
+    Precio Unitario: Q {det[2]}
                 """
 
             return respuesta
@@ -77,12 +77,12 @@ def procesar_input(opcion):
                 respuesta = ""
                 for prod in productos:
                     respuesta += f"""
-                        ID producto {prod[0]}
-                        Nombre: {prod[1]}
-                        Categoria: {prod[2]}
-                        Marca: {prod[3]}
-                        Precio: {prod[4]}
-                        Stock: {prod[5]}
+    ID producto {prod[0]}
+    Nombre: {prod[1]}
+    Categoria: {prod[2]}
+    Marca: {prod[3]}
+    Precio: {prod[4]}
+    Stock: {prod[5]}
                     """
                 return respuesta
             else:

@@ -105,8 +105,8 @@ class ChatUI(QWidget):
         main_layout.addLayout(bottom_layout)
         self.setLayout(main_layout)
 
-        self.add_bot_message("Hola gracias por preferirnos, como puedo ayudarte? escribe alguna de estas palabras clave para que pueda ayudarte con tu consulta: producto, categoria, pedido, comprar o salir")
-
+        self.add_bot_message("Hola gracias por preferirnos, como puedo ayudarte?")
+        self.add_bot_message("Prueba escribir: \n producto, categoria, pedido, comprar o salir.")
     def mostrar_menu(self):
         menu = QMenu()
         menu.addAction("Cuenta")
@@ -136,7 +136,7 @@ class ChatUI(QWidget):
             padding: 10px;
             border-radius: 10px;
         """)
-        bubble.setMaximumWidth(220)
+        bubble.setMaximumWidth(int(self.width() * 0.8))
 
         layout.addWidget(avatar)
         layout.addWidget(bubble)
