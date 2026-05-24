@@ -106,7 +106,7 @@ class ChatUI(QWidget):
         self.setLayout(main_layout)
 
         self.add_bot_message("Hola gracias por preferirnos, como puedo ayudarte?")
-        self.add_bot_message("Prueba escribir: \n producto, categoria, pedido, comprar o salir.")
+        self.add_bot_message("Prueba escribir: \n producto, categoria, pedido o comprar.")
     def mostrar_menu(self):
         menu = QMenu()
         menu.addAction("Cuenta")

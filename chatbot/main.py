@@ -92,4 +92,4 @@ def procesar_input(opcion):
         return "Estamos trabajando para que pronto puedas comprar desde aqui"
 
     else:
-        return "No tenemos esa opción \nprueba escribir: producto, categoria, pedido, comprar o salir"
+        return "No tenemos esa opción \nprueba escribir: producto, categoria, pedido o comprar."

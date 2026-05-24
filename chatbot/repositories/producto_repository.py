@@ -20,6 +20,7 @@ class ProductoRepository:
                 JOIN marca m ON p.marca_id = m.id
                 WHERE p.nombre ILIKE %s
                 AND p.activo = TRUE
+                LIMIT 15
             """,("%" + nombre + "%",)
             )
 
@@ -41,6 +42,7 @@ class ProductoRepository:
                 JOIN marca m ON p.marca_id = m.id
                 WHERE c.nombre ILIKE %s
                 AND p.activo = TRUE
+                LIMIT 15
             """,("%" + categoria + "%",)
             )
             return cursor.fetchall()
