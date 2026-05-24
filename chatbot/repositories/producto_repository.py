@@ -18,10 +18,11 @@ class ProductoRepository:
                 FROM producto p
                 JOIN categoria c ON p.categoria_id = c.id
                 JOIN marca m ON p.marca_id = m.id
-                WHERE p.nombre ILIKE %s
+                WHERE p.nombre ILIKE %s 
+                OR m.nombre ILIKE %s
                 AND p.activo = TRUE
                 LIMIT 15
-            """,("%" + nombre + "%",)
+            """,("%" + nombre + "%", "%" + nombre + "%" )
             )
 
             return cursor.fetchall()

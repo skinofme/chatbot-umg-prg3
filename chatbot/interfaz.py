@@ -160,7 +160,7 @@ class ChatUI(QWidget):
             padding: 10px;
             border-radius: 10px;
         """)
-        bubble.setMaximumWidth(220)
+        bubble.setMaximumWidth(int(self.width() * 0.8))
 
         layout.addStretch()
         layout.addWidget(bubble)
@@ -211,7 +211,7 @@ class ChatUI(QWidget):
         respuesta = procesar_input(self.last_input)
 
         if respuesta == "__PEDIR_NOMBRE_PRODUCTO__":
-            self.typing_label.setText("Ingresa el nombre del producto que buscas: ")
+            self.typing_label.setText("Ingresa el nombre del producto que buscas o la marca del producto: ")
             self.modo = "producto"
 
         elif respuesta == "__PEDIR_ID_PEDIDO__":

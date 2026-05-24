@@ -33,7 +33,7 @@ def procesar_input(opcion):
                 """
             return respuesta
         else:
-            return "Ups, parece que no tenemos el producto que buscas, prueba con otro"
+            return "Ups, parece que no tenemos el producto que buscas, intenta buscar productos como: Airpods, Doritos, Macbook, Camiseta, Iphone \n\nO busca marcas como: Apple, Samsung, Sony, LG, Nike, Adidas, Puma, Nestlé, Coca-Cola, Lenovo, HP o Dell."
 
     elif opcion == "pedido":
         return "__PEDIR_ID_PEDIDO__"
@@ -92,7 +92,7 @@ def procesar_input(opcion):
                     """
                 return respuesta
             else:
-                return "Ups, parece que no tenemos el producto que buscas, prueba con otro"
+                return "Ups, parece que no tenemos productos de esa categoria, intenta buscar categorias como: \n\nSmartphones, Laptops, Audio, Televisores, Ropa Deportiva, Calzado, Snacks o Bebidas."
     
     elif opcion == "comprar":
         return "Estamos trabajando para que pronto puedas comprar desde aqui"
