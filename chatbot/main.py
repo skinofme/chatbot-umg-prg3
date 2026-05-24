@@ -39,7 +39,13 @@ def procesar_input(opcion):
         return "__PEDIR_ID_PEDIDO__"
 
     elif opcion.startswith("pedido:"):
-        pedido_id = int(opcion.split(":", 1)[1].strip())
+        pedido_id = 0;
+
+        try:
+            pedido_id = int(opcion.split(":", 1)[1].strip())
+        except:
+            return "El ID del pedido debe ser un numero entero."
+
         result = pedService.buscar_pedido_completo(pedido_id)
 
         if result:
@@ -69,7 +75,7 @@ def procesar_input(opcion):
     elif opcion == "categoria":
         return "__PEDIR__NOMBRE__CATEGORIA__"
     elif opcion.startswith("categoria:"):
-            print(opcion)
+            
             categoria = opcion.split(":", 1)[1].strip()
             productos = prodService.buscar_por_categoria(categoria)
 
