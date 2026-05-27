@@ -13,8 +13,8 @@ class ChatUI(QWidget):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("CHATBOT")
-        self.setGeometry(100, 100, 400, 550)
+        self.setWindowTitle("Inventory-bot")
+        self.setGeometry(100, 50, 400, 630)
 
         self.modo = None
         self.last_input = ""
@@ -24,7 +24,7 @@ class ChatUI(QWidget):
 
         # 🖼️ FONDO
         self.fondo = QLabel(self)
-        self.fondo.setGeometry(0, 0, 400, 550)
+        # self.fondo.setGeometry(0, 0, 1366, 768)
 
         pixmap_fondo = QPixmap("chatbot/assets/fondo.jpg")
         self.fondo.setPixmap(pixmap_fondo)
@@ -36,15 +36,15 @@ class ChatUI(QWidget):
         header_layout = QHBoxLayout()
 
         logo_label = QLabel()
-        logo_pixmap = QPixmap("chatbot/assets/logo.jpg")
-        logo_pixmap = logo_pixmap.scaled(50, 50, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+        logo_pixmap = QPixmap("chatbot/assets/logo-2.png")
+        logo_pixmap = logo_pixmap.scaled(80, 80, Qt.KeepAspectRatio, Qt.SmoothTransformation)
 
         logo_label.setPixmap(logo_pixmap)
         logo_label.setFixedSize(80, 80)
-        logo_label.setStyleSheet("border-radius: 25px;")
+        logo_label.setStyleSheet("background: transparent;")
         logo_label.setScaledContents(True)
 
-        title = QLabel("CHATBOT")
+        title = QLabel("Inventory-BOT")
         title.setStyleSheet("color: white; font-size: 20px; font-weight: bold; margin-left: 10px;")
 
         config_btn = QPushButton("⋮")
@@ -107,6 +107,13 @@ class ChatUI(QWidget):
 
         self.add_bot_message("Hola gracias por preferirnos, como puedo ayudarte?")
         self.add_bot_message("Prueba escribir: \n producto, categoria, pedido o comprar.")
+    
+    # ESTE METODO SE EJECUTA CADA QUE SE CAMBIA EL TAMAÑO DE LA VENTANA 
+    def resizeEvent(self, event):
+        # Hace que el Qlabel del fondo siempre tenga el ancho y algo actual de la ventana
+        self.fondo.setGeometry(0,0, self.width(), self.height())
+        super().resizeEvent(event)
+
     def mostrar_menu(self):
         menu = QMenu()
         menu.addAction("Cuenta")
@@ -122,12 +129,12 @@ class ChatUI(QWidget):
         layout = QHBoxLayout()
 
         avatar = QLabel()
-        pixmap = QPixmap("chatbot/assets/robot.jpg")
+        pixmap = QPixmap("chatbot/assets/robot.png")
         pixmap = pixmap.scaled(40, 40, Qt.KeepAspectRatioByExpanding)
 
         avatar.setPixmap(pixmap)
         avatar.setFixedSize(40, 40)
-        avatar.setStyleSheet("border-radius: 20px;")
+        avatar.setStyleSheet("background: transparent;")
 
         bubble = QLabel(message)
         bubble.setWordWrap(True)
