@@ -190,6 +190,10 @@ class ChatUI(QWidget):
             text = f"pedido:{text}"
         elif self.modo == "categoria":
             text = f"categoria:{text}"
+        elif self.modo == "comprar_id":
+            text = f"comprar_id:{text}"
+        elif self.modo == "comprar_cantidad":
+            text = f"comprar_cantidad:{text}"
 
         self.last_input = text
 
@@ -228,6 +232,15 @@ class ChatUI(QWidget):
         elif respuesta == "__PEDIR__NOMBRE__CATEGORIA__":
             self.typing_label.setText("Ingresa el nombre de la categoria del producto: ")
             self.modo = "categoria"
+        
+        elif respuesta == "__PEDIR_ID_PRODUCTO__":
+            self.typing_label.setText("Ingresa el ID del producto que deseas comprar: ")
+            self.modo = "comprar_id"
+        
+        elif respuesta == "__PEDIR_CANTIDAD__":
+            self.typing_label.setText("¿Cuántas unidades deseas comprar?: ")
+            self.modo = "comprar_cantidad"
+        
         else:
             self.typing_label.setText(respuesta)
             self.modo = None

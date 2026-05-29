@@ -6,6 +6,11 @@ conn = connection.get_connection()
 prodService = ProductoService(conn)
 pedService = PedidoService(conn)
 
+# Variables globales para mantener contexto en el flujo de compra
+compra_temporal = {
+    "producto_id": None
+}
+
 
 def procesar_input(opcion):
     opcion = opcion.strip().lower()
@@ -95,7 +100,35 @@ def procesar_input(opcion):
                 return "Ups, parece que no tenemos productos de esa categoria, intenta buscar categorias como: \n\nSmartphones, Laptops, Audio, Televisores, Ropa Deportiva, Calzado, Snacks o Bebidas."
     
     elif opcion == "comprar":
-        return "Estamos trabajando para que pronto puedas comprar desde aqui"
+        return "__PEDIR_ID_PRODUCTO__"
+    
+    elif opcion.startswith("comprar_id:"):
+        try:
+            producto_id = int(opcion.split(":", 1)[1].strip())
+            # Almacenar el ID del producto en la variable temporal
+            compra_temporal["producto_id"] = producto_id
+            return "__PEDIR_CANTIDAD__"
+        except:
+            return "Error: El ID del producto debe ser un número entero."
+    
+    elif opcion.startswith("comprar_cantidad:"):
+        try:
+            cantidad = int(opcion.split(":", 1)[1].strip())
+            
+            # Validar que tengamos un producto_id almacenado
+            if compra_temporal["producto_id"] is None:
+                return "Error: No se encontró el producto. Por favor, intenta nuevamente escribiendo 'comprar'."
+            
+            producto_id = compra_temporal["producto_id"]
+            # Limpiar la variable temporal
+            compra_temporal["producto_id"] = None
+            
+            # Crear la compra
+            respuesta = pedService.crear_compra(producto_id, cantidad)
+            return respuesta
+        
+        except ValueError:
+            return "Error: La cantidad debe ser un número entero."
 
     else:
         return "No tenemos esa opción \nprueba escribir: producto, categoria, pedido o comprar."
