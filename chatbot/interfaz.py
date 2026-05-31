@@ -76,6 +76,9 @@ class ChatUI(QWidget):
         self.chat_container.setLayout(self.chat_layout)
         self.scroll.setWidget(self.chat_container)
 
+        # AUTOMATIC SCROLL
+        self.scroll.verticalScrollBar().rangeChanged.connect(self.bajar_scroll_al_final)
+
         main_layout.addWidget(self.scroll)
 
         # ✏️ INPUT
@@ -115,6 +118,10 @@ class ChatUI(QWidget):
         self.fondo.setGeometry(0,0, self.width(), self.height())
         super().resizeEvent(event)
 
+    def bajar_scroll_al_final(self, min_val, max_val):
+        # mueve la barra vertical al valor maximo posible
+        self.scroll.verticalScrollBar().setValue(max_val)
+    
     def mostrar_menu(self):
         menu = QMenu()
         menu.addAction("Cuenta")
