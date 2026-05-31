@@ -13,7 +13,7 @@ class ChatUI(QWidget):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Inventory-bot")
+        self.setWindowTitle("E-Shop-bot")
         self.setGeometry(360, 50, 610, 630)
 
         self.modo = None
@@ -44,7 +44,7 @@ class ChatUI(QWidget):
         logo_label.setStyleSheet("background: transparent;")
         logo_label.setScaledContents(True)
 
-        title = QLabel("Inventory-BOT")
+        title = QLabel("E-Shop-BOT")
         title.setStyleSheet("color: white; font-size: 20px; font-weight: bold; margin-left: 10px;")
 
         config_btn = QPushButton("⋮")
