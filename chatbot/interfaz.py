@@ -14,7 +14,7 @@ class ChatUI(QWidget):
         super().__init__()
 
         self.setWindowTitle("Inventory-bot")
-        self.setGeometry(100, 50, 400, 630)
+        self.setGeometry(360, 50, 610, 630)
 
         self.modo = None
         self.last_input = ""
@@ -26,7 +26,7 @@ class ChatUI(QWidget):
         self.fondo = QLabel(self)
         # self.fondo.setGeometry(0, 0, 1366, 768)
 
-        pixmap_fondo = QPixmap("chatbot/assets/fondo.jpg")
+        pixmap_fondo = QPixmap("chatbot/assets/fondo-5-osc.jpg")
         self.fondo.setPixmap(pixmap_fondo)
         self.fondo.setScaledContents(True)
         self.fondo.lower()
@@ -36,7 +36,7 @@ class ChatUI(QWidget):
         header_layout = QHBoxLayout()
 
         logo_label = QLabel()
-        logo_pixmap = QPixmap("chatbot/assets/logo-2.png")
+        logo_pixmap = QPixmap("chatbot/assets/logo.png")
         logo_pixmap = logo_pixmap.scaled(80, 80, Qt.KeepAspectRatio, Qt.SmoothTransformation)
 
         logo_label.setPixmap(logo_pixmap)
@@ -94,8 +94,9 @@ class ChatUI(QWidget):
         send_button.setStyleSheet("""
             background-color: #4a90e2;
             color: white;
-            border-radius: 20px;
-            padding: 20px;
+            font-size: 30px;
+            border-radius: 30px;
+            padding: 15px;
         """)
         send_button.clicked.connect(self.send_message)
 
@@ -106,7 +107,7 @@ class ChatUI(QWidget):
         self.setLayout(main_layout)
 
         self.add_bot_message("Hola gracias por preferirnos, como puedo ayudarte?")
-        self.add_bot_message("Prueba escribir: \n producto, categoria, pedido o comprar.")
+        self.add_bot_message("💡 Prueba escribir: \n producto, categoria, pedido o comprar.")
     
     # ESTE METODO SE EJECUTA CADA QUE SE CAMBIA EL TAMAÑO DE LA VENTANA 
     def resizeEvent(self, event):
@@ -129,7 +130,7 @@ class ChatUI(QWidget):
         layout = QHBoxLayout()
 
         avatar = QLabel()
-        pixmap = QPixmap("chatbot/assets/robot.png")
+        pixmap = QPixmap("chatbot/assets/logo.png")
         pixmap = pixmap.scaled(40, 40, Qt.KeepAspectRatioByExpanding)
 
         avatar.setPixmap(pixmap)

@@ -35,7 +35,8 @@ def procesar_input(opcion):
     Marca: {prod[3]}
     Precio: {prod[4]}
     Stock: {prod[5]}
-                """
+"""
+            respuesta += "\n________________________________\n\n💡 Para continuar ingresa 'comprar'"
             return respuesta
         else:
             return "Ups, parece que no tenemos el producto que buscas, intenta buscar productos como: Airpods, Doritos, Macbook, Camiseta, Iphone \n\nO busca marcas como: Apple, Samsung, Sony, LG, Nike, Adidas, Puma, Nestlé, Coca-Cola, Lenovo, HP o Dell."
@@ -95,6 +96,7 @@ def procesar_input(opcion):
     Precio: {prod[4]}
     Stock: {prod[5]}
                     """
+                respuesta += "\n________________________________\n\n💡 Para continuar ingresa 'comprar'"
                 return respuesta
             else:
                 return "Ups, parece que no tenemos productos de esa categoria, intenta buscar categorias como: \n\nSmartphones, Laptops, Audio, Televisores, Ropa Deportiva, Calzado, Snacks o Bebidas."
